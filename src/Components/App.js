@@ -1,6 +1,6 @@
 import React from 'react';
 import ColorPlayButtons from './ColorPlayButtons';
-import GameControls from './GameControls';
+import Counter from './Counter';
 import '../style/App.css';
 
 class App extends React.Component {
@@ -12,7 +12,8 @@ class App extends React.Component {
         <ColorPlayButtons id="2" />
         <ColorPlayButtons id="3" />
         <div id="game-control-wrapper">
-
+          <h1>Simon Game</h1>
+          <Counter />
         </div>
       </div>
     )
