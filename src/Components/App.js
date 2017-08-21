@@ -2,6 +2,7 @@ import React from 'react';
 import ColorPlayButtons from './ColorPlayButtons';
 import Counter from './Counter';
 import Start from './Start';
+import Strict from './Strict';
 import '../style/App.css';
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
           <div id="game-controls">
             <Counter />
             <Start />
+            <Strict />
           </div>
         </div>
       </div>

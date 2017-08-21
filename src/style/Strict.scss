@@ -1,0 +1,25 @@
+#strict-button-wrapper {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: pink;
+}
+
+#strict-mode-light {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  border: solid 1px grey;
+}
+
+#strict-mode-button {
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+  border-radius: 50%;
+  border: solid 3px grey;
+}
