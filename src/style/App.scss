@@ -16,9 +16,14 @@
   border-radius: 50%;
   position: absolute;
   top: 2;
+
+  h1 {
+    text-align: center;
+    margin-top: 20%;
+  }
 }
 
-h1 {
-  text-align: center;
-  margin-top: 20%;
+#game-controls {
+  display: flex;
+  justify-content: space-around;
 }
