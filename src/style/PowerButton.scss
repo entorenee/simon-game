@@ -11,6 +11,7 @@
   width: 60px;
   height: inherit;
   display: inline-block;
+  cursor: pointer;
   background-color: black;
 }
 
@@ -18,10 +19,14 @@
   width: 50%;
   height: inherit;
   display: inline-block;
-  // transform: translateX(100%);
   background-color: blue;
+  transition: transform 500ms;
 }
 
 .power-identifiers, #toggle-power {
   margin-right: 8px;
+}
+
+.power-on {
+  transform: translateX(100%);
 }

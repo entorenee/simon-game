@@ -7,6 +7,28 @@ import PowerButton from './PowerButton';
 import '../style/App.css';
 
 class App extends React.Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      gameOn: false,
+      strict: false,
+    }
+
+    this.toggleGamePower = this.toggleGamePower.bind(this);
+  }
+
+  toggleGamePower() {
+    var powerState = {gameOn: this.state.gameOn};
+    if (this.state.gameOn === false) {
+      powerState.gameOn = true;
+    } else {
+      powerState.gameOn = false;
+    }
+    this.setState({...powerState});
+  }
+
   render() {
     return (
       <div id="game">
@@ -21,7 +43,10 @@ class App extends React.Component {
             <Start />
             <Strict />
           </div>
-          <PowerButton />
+          <PowerButton
+            toggleGamePower = {this.toggleGamePower}
+            gameOn = {this.state.gameOn}
+          />
         </div>
       </div>
     )
