@@ -1,0 +1,27 @@
+#power-button-wrapper {
+  margin: 0 auto;
+  margin-top: 40px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#toggle-power {
+  width: 60px;
+  height: inherit;
+  display: inline-block;
+  background-color: black;
+}
+
+#toggle-power-button {
+  width: 50%;
+  height: inherit;
+  display: inline-block;
+  // transform: translateX(100%);
+  background-color: blue;
+}
+
+.power-identifiers, #toggle-power {
+  margin-right: 8px;
+}

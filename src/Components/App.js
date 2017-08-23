@@ -3,6 +3,7 @@ import ColorPlayButtons from './ColorPlayButtons';
 import Counter from './Counter';
 import Start from './Start';
 import Strict from './Strict';
+import PowerButton from './PowerButton';
 import '../style/App.css';
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Start />
             <Strict />
           </div>
+          <PowerButton />
         </div>
       </div>
     )
