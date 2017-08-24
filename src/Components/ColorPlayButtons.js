@@ -3,17 +3,39 @@ import PropTypes from 'prop-types';
 import '../style/ColorPlayButtons.css';
 
 class ColorPlayButtons extends React.Component {
+
+  constructor() {
+    super();
+    this.addActiveClass = this.addActiveClass.bind(this);
+    this.clickButton = this.clickButton.bind(this);
+  }
+
+  addActiveClass() {
+    var button = document.getElementById('btn-' + this.props.id);
+    button.classList.add(this.props.activeClass);
+  }
+
+  clickButton() {
+    var button = document.getElementById('btn-' + this.props.id);
+    button.classList.remove(this.props.activeClass);
+  }
+
   render() {
     return (
-      <div id={"btn-" + this.props.id} className="color-buttons">
-
+      <div
+        id={"btn-" + this.props.id}
+        className="color-buttons"
+        onMouseDown={() => this.addActiveClass()}
+        onMouseUp={() => this.clickButton()}
+      >
       </div>
     )
   }
 }
 
 ColorPlayButtons.propTypes = {
-
+  id: PropTypes.string.isRequired,
+  activeClass: PropTypes.string.isRequired
 }
 
 export default ColorPlayButtons;

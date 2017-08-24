@@ -32,10 +32,10 @@ class App extends React.Component {
   render() {
     return (
       <div id="game">
-        <ColorPlayButtons id="0" />
-        <ColorPlayButtons id="1" />
-        <ColorPlayButtons id="2" />
-        <ColorPlayButtons id="3" />
+        <ColorPlayButtons id="0" activeClass="active-green" />
+        <ColorPlayButtons id="1" activeClass="active-red" />
+        <ColorPlayButtons id="2" activeClass="active-yellow" />
+        <ColorPlayButtons id="3" activeClass="active-blue" />
         <div id="game-control-wrapper">
           <h1>Simon Game</h1>
           <div id="game-controls">
