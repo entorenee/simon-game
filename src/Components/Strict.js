@@ -7,7 +7,7 @@ class Strict extends React.Component {
     return (
       <div id="strict-button-wrapper">
         <div id="strict-mode-light"></div>
-        <div id="strict-mode-button"></div>
+        <div id="strict-mode-button" onClick={() => this.props.toggleStrict()}></div>
         STRICT
       </div>
     )
@@ -15,7 +15,7 @@ class Strict extends React.Component {
 }
 
 Strict.propTypes = {
-
+  toggleStrict: PropTypes.func.isRequired
 }
 
 export default Strict;

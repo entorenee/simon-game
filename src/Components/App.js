@@ -22,6 +22,7 @@ class App extends React.Component {
     }
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
+    this.toggleStrict = this.toggleStrict.bind(this);
     this.startGame = this.startGame.bind(this);
     this.randomButtonGenerator = this.randomButtonGenerator.bind(this);
     this.computerPlayButtonPattern = this.computerPlayButtonPattern.bind(this);
@@ -35,6 +36,11 @@ class App extends React.Component {
       powerState.gameOn = false;
     }
     this.setState({...powerState});
+  }
+
+  toggleStrict() {
+    var strictState = !this.state.strict;
+    this.setState({strict: strictState});
   }
 
   startGame() {
@@ -102,7 +108,7 @@ class App extends React.Component {
               gameOn={this.state.gameOn}
             />
             <Start startGame={this.startGame}/>
-            <Strict />
+            <Strict toggleStrict={this.toggleStrict} />
           </div>
           <PowerButton
             toggleGamePower = {this.toggleGamePower}
