@@ -39,10 +39,14 @@ class App extends React.Component {
   }
 
   randomButtonGenerator(clear = false) {
-    var buttonPattern = !clear ? this.state.buttonPattern : [];
-    var randomNum = Math.floor(Math.random() * 3);
-    buttonPattern.push(randomNum);
-    this.setState({buttonPattern: buttonPattern});
+    if (typeof clear === "boolean") {
+      var buttonPattern = !clear ? this.state.buttonPattern : [];
+      var randomNum = Math.floor(Math.random() * 3);
+      buttonPattern.push(randomNum);
+      this.setState({buttonPattern: buttonPattern});
+    } else {
+      console.log("The parameter passed to randomButtonGenerator must be a boolean.");
+    }
   }
 
   render() {
