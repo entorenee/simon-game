@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       gameOn: false,
       strict: false,
+      computerMoves: []
     }
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
@@ -39,7 +40,10 @@ class App extends React.Component {
         <div id="game-control-wrapper">
           <h1>Simon Game</h1>
           <div id="game-controls">
-            <Counter />
+            <Counter
+              moveCount={this.state.computerMoves.length}
+              gameOn={this.state.gameOn}
+            />
             <Start />
             <Strict />
           </div>
