@@ -18,6 +18,7 @@ class App extends React.Component {
     }
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
+    this.startGame = this.startGame.bind(this);
     this.randomButtonGenerator = this.randomButtonGenerator.bind(this);
   }
 
@@ -31,8 +32,14 @@ class App extends React.Component {
     this.setState({...powerState});
   }
 
-  randomButtonGenerator() {
-    var buttonPattern = this.state.buttonPattern;
+  startGame() {
+    if (this.state.gameOn) {
+      this.state.buttonPattern.length === 0 ? this.randomButtonGenerator() : this.randomButtonGenerator(true);
+    }
+  }
+
+  randomButtonGenerator(clear = false) {
+    var buttonPattern = !clear ? this.state.buttonPattern : [];
     var randomNum = Math.floor(Math.random() * 3);
     buttonPattern.push(randomNum);
     this.setState({buttonPattern: buttonPattern});
@@ -52,7 +59,7 @@ class App extends React.Component {
               moveCount={this.state.buttonPattern.length}
               gameOn={this.state.gameOn}
             />
-            <Start />
+            <Start startGame={this.startGame}/>
             <Strict />
           </div>
           <PowerButton

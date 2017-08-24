@@ -6,7 +6,7 @@ class Start extends React.Component {
   render() {
     return (
       <div id="start-button-wrapper">
-        <div id="start-button"></div>
+        <div id="start-button" onClick={() => this.props.startGame()}></div>
         START
       </div>
     )
@@ -14,7 +14,7 @@ class Start extends React.Component {
 }
 
 Start.propTypes = {
-
+  startGame: PropTypes.func.isRequired
 }
 
 export default Start;
