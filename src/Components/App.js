@@ -14,10 +14,11 @@ class App extends React.Component {
     this.state = {
       gameOn: false,
       strict: false,
-      computerMoves: []
+      buttonPattern: []
     }
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
+    this.randomButtonGenerator = this.randomButtonGenerator.bind(this);
   }
 
   toggleGamePower() {
@@ -28,6 +29,13 @@ class App extends React.Component {
       powerState.gameOn = false;
     }
     this.setState({...powerState});
+  }
+
+  randomButtonGenerator() {
+    var buttonPattern = this.state.buttonPattern;
+    var randomNum = Math.floor(Math.random() * 3);
+    buttonPattern.push(randomNum);
+    this.setState({buttonPattern: buttonPattern});
   }
 
   render() {
@@ -41,7 +49,7 @@ class App extends React.Component {
           <h1>Simon Game</h1>
           <div id="game-controls">
             <Counter
-              moveCount={this.state.computerMoves.length}
+              moveCount={this.state.buttonPattern.length}
               gameOn={this.state.gameOn}
             />
             <Start />
