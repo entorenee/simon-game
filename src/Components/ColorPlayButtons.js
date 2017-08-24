@@ -12,6 +12,7 @@ class ColorPlayButtons extends React.Component {
 
   addActiveClass() {
     var button = document.getElementById('btn-' + this.props.id);
+    this.props.sound.play();
     button.classList.add(this.props.activeClass);
   }
 
@@ -35,7 +36,8 @@ class ColorPlayButtons extends React.Component {
 
 ColorPlayButtons.propTypes = {
   id: PropTypes.string.isRequired,
-  activeClass: PropTypes.string.isRequired
+  activeClass: PropTypes.string.isRequired,
+  sound: PropTypes.object.isRequired
 }
 
 export default ColorPlayButtons;

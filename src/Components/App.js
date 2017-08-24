@@ -4,6 +4,10 @@ import Counter from './Counter';
 import Start from './Start';
 import Strict from './Strict';
 import PowerButton from './PowerButton';
+import simonSound0 from '../sounds/simonSound0.mp3';
+import simonSound1 from '../sounds/simonSound1.mp3';
+import simonSound2 from '../sounds/simonSound2.mp3';
+import simonSound3 from '../sounds/simonSound3.mp3';
 import '../style/App.css';
 
 class App extends React.Component {
@@ -20,6 +24,7 @@ class App extends React.Component {
     this.toggleGamePower = this.toggleGamePower.bind(this);
     this.startGame = this.startGame.bind(this);
     this.randomButtonGenerator = this.randomButtonGenerator.bind(this);
+    this.computerPlayButtonPattern = this.computerPlayButtonPattern.bind(this);
   }
 
   toggleGamePower() {
@@ -49,13 +54,46 @@ class App extends React.Component {
     }
   }
 
+  computerPlayButtonPattern(counter = 0) {
+    var activeColors = ["active-green", "active-red", "active-yellow", "active-blue"];
+    var pattern = this.state.buttonPattern;
+    var id = pattern[counter];
+    var sound = id === 0 ? new Audio(simonSound0) : id === 1 ? new Audio(simonSound1) : id === 2 ? new Audio(simonSound2) : new Audio(simonSound3);
+    var el = document.getElementById('btn-' + id);
+    el.classList.add(activeColors[id]);
+    sound.play();
+    setTimeout(() => {
+      el.classList.remove(activeColors[id]);
+      if (counter < pattern.length - 1) {
+        counter++;
+        this.computerPlayButtonPattern(counter);
+      }
+    }, 1000);
+  }
+
   render() {
     return (
       <div id="game">
-        <ColorPlayButtons id="0" activeClass="active-green" />
-        <ColorPlayButtons id="1" activeClass="active-red" />
-        <ColorPlayButtons id="2" activeClass="active-yellow" />
-        <ColorPlayButtons id="3" activeClass="active-blue" />
+        <ColorPlayButtons
+          id="0"
+          activeClass="active-green"
+          sound={new Audio(simonSound0)}
+        />
+        <ColorPlayButtons
+          id="1"
+          activeClass="active-red"
+          sound={new Audio(simonSound1)}
+        />
+        <ColorPlayButtons
+          id="2"
+          activeClass="active-yellow"
+          sound={new Audio(simonSound2)}
+        />
+        <ColorPlayButtons
+          id="3"
+          activeClass="active-blue"
+          sound={new Audio(simonSound3)}
+        />
         <div id="game-control-wrapper">
           <h1>Simon Game</h1>
           <div id="game-controls">
