@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 .color-buttons {
   flex-basis: 45%;
   height: 284px;
@@ -5,28 +7,28 @@
 }
 
 #btn-0 {
-  background-color: green;
+  background-color: $green;
   border-top-left-radius: 100%;
   border-top: solid 15px black;
   border-left: solid 15px black;
 }
 
 #btn-1 {
-  background-color: red;
+  background-color: $red;
   border-top-right-radius: 100%;
   border-top: solid 15px black;
   border-right: solid 15px black;
 }
 
 #btn-2 {
-  background-color: yellow;
+  background-color: $yellow;
   border-bottom-left-radius: 100%;
   border-bottom: solid 15px black;
   border-left: solid 15px black;
 }
 
 #btn-3 {
-  background-color: blue;
+  background-color: $blue;
   border-bottom-right-radius: 100%;
   border-bottom: solid 15px black;
   border-right: solid 15px black;
