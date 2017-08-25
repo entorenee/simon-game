@@ -18,7 +18,9 @@ class App extends React.Component {
     this.state = {
       gameOn: false,
       strict: false,
-      buttonPattern: []
+      isPlayersTurn: false,
+      buttonPattern: [],
+      playerCopyPattern: []
     }
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
@@ -26,6 +28,7 @@ class App extends React.Component {
     this.startGame = this.startGame.bind(this);
     this.randomButtonGenerator = this.randomButtonGenerator.bind(this);
     this.computerPlayButtonPattern = this.computerPlayButtonPattern.bind(this);
+    this.playerSelectButton = this.playerSelectButton.bind(this);
   }
 
   toggleGamePower() {
@@ -33,7 +36,14 @@ class App extends React.Component {
     if (this.state.gameOn === false) {
       powerState.gameOn = true;
     } else {
-      powerState.gameOn = false;
+      powerState = {
+        gameOn: false,
+        strict: false,
+        isPlayersTurn: false,
+        buttonPattern: [],
+        playerCopyPattern: []
+      }
+
     }
     this.setState({...powerState});
   }
@@ -55,6 +65,7 @@ class App extends React.Component {
       var randomNum = Math.floor(Math.random() * 3);
       buttonPattern.push(randomNum);
       this.setState({buttonPattern: buttonPattern});
+      setTimeout(() => {this.computerPlayButtonPattern();}, 1200);
     } else {
       console.log("The parameter passed to randomButtonGenerator must be a boolean.");
     }
@@ -73,8 +84,27 @@ class App extends React.Component {
       if (counter < pattern.length - 1) {
         counter++;
         this.computerPlayButtonPattern(counter);
+      } else {
+        this.setState({
+          isPlayersTurn: true,
+          playerCopyPattern: []
+        });
       }
-    }, 1000);
+    }, 800);
+  }
+
+  playerSelectButton(button) {
+    var states = {...this.state};
+    var playerIndex = this.state.playerCopyPattern.length;
+    if (button === this.state.buttonPattern[playerIndex]) {
+      states.playerCopyPattern.push(button);
+      if (states.playerCopyPattern.length === this.state.buttonPattern.length) {
+        states.isPlayersTurn = false;
+        this.randomButtonGenerator();
+      }
+    } else {console.log("Sorry incorrect match.");}
+
+    this.setState({...states});
   }
 
   render() {
@@ -84,21 +114,32 @@ class App extends React.Component {
           id="0"
           activeClass="active-green"
           sound={new Audio(simonSound0)}
+          playerSelectButton={this.playerSelectButton}
+          isPlayersTurn={this.state.isPlayersTurn}
+          gameOn={this.state.gameOn}
         />
         <ColorPlayButtons
           id="1"
           activeClass="active-red"
           sound={new Audio(simonSound1)}
+          playerSelectButton={this.playerSelectButton}
+          isPlayersTurn={this.state.isPlayersTurn}
+          gameOn={this.state.gameOn}
         />
         <ColorPlayButtons
           id="2"
           activeClass="active-yellow"
           sound={new Audio(simonSound2)}
+          playerSelectButton={this.playerSelectButton}
+          isPlayersTurn={this.state.isPlayersTurn}
+          gameOn={this.state.gameOn}
         />
         <ColorPlayButtons
           id="3"
           activeClass="active-blue"
           sound={new Audio(simonSound3)}
+          playerSelectButton={this.playerSelectButton}
+          isPlayersTurn={this.state.isPlayersTurn}
         />
         <div id="game-control-wrapper">
           <h1>Simon Game</h1>
