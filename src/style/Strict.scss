@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 #strict-button-wrapper {
   width: 65px;
   height: 65px;
@@ -10,9 +12,10 @@
 #strict-mode-light {
   width: 10px;
   height: 10px;
-  background-color: red;
+  background-color: black;
   border-radius: 50%;
-  border: solid 1px grey;
+  border: solid 1px $borderColor;
+  transition: background-color 800ms;
 }
 
 #strict-mode-button {
@@ -20,6 +23,6 @@
   height: 20px;
   background-color: yellow;
   border-radius: 50%;
-  border: solid 3px grey;
+  border: solid 3px $borderColor;
   cursor: pointer;
 }

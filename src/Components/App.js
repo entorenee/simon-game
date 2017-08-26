@@ -176,7 +176,10 @@ class App extends React.Component {
               gameOn={this.state.gameOn}
             />
             <Start startGame={this.startGame}/>
-            <Strict toggleStrict={this.toggleStrict} />
+            <Strict
+              toggleStrict={this.toggleStrict}
+              isStrict={this.state.strict}
+            />
           </div>
           <PowerButton
             toggleGamePower = {this.toggleGamePower}
