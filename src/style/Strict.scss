@@ -7,11 +7,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: $screenBreak) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 #strict-mode-light {
-  width: 10px;
-  height: 10px;
+  width: 15%;
+  height: 0;
+  padding-bottom: 15%;
   background-color: black;
   border-radius: 50%;
   border: solid 1px $borderColor;
@@ -19,8 +25,9 @@
 }
 
 #strict-mode-button {
-  width: 20px;
-  height: 20px;
+  width: 30%;
+  height: 0;
+  padding-bottom: 30%;
   background-color: yellow;
   border-radius: 50%;
   border: solid 3px $borderColor;

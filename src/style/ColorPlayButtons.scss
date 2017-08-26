@@ -1,11 +1,17 @@
 @import './vars.scss';
 
 .color-buttons {
-  flex-basis: 45%;
-  height: 284px;
+  width: 45%;
+  height: 0;
+  padding-top: 45%;
   border: solid 7px $borderColor;
   transition: background-color 800ms;
   cursor: pointer;
+
+  @media screen and (max-width: $screenBreak) {
+    width: 40%;
+    padding-top: 40%;
+  }
 }
 
 #btn-0 {
