@@ -8,6 +8,7 @@ import simonSound0 from '../sounds/simonSound0.mp3';
 import simonSound1 from '../sounds/simonSound1.mp3';
 import simonSound2 from '../sounds/simonSound2.mp3';
 import simonSound3 from '../sounds/simonSound3.mp3';
+import buzzer from '../sounds/buzzer.mp3';
 import '../style/App.css';
 
 class App extends React.Component {
@@ -117,11 +118,12 @@ class App extends React.Component {
       }
       this.setState({...states});
     } else { // This block handles if an incorrect button is pushed.
+      var buzzerSound = new Audio(buzzer);
       if (!this.state.strict) {
-        states.isPlayersTurn = false;
+        buzzerSound.play();
         setTimeout(() => {this.computerPlayButtonPattern();}, 2000);
       } else {
-        states.isPlayersTurn = false;
+        buzzerSound.play();
         this.randomButtonGenerator(true);
       }
       this.setState({
