@@ -62,7 +62,7 @@ class App extends React.Component {
   randomButtonGenerator(clear = false) {
     if (typeof clear === "boolean") {
       var buttonPattern = !clear ? this.state.buttonPattern : [];
-      var randomNum = Math.floor(Math.random() * 3);
+      var randomNum = Math.floor(Math.random() * 4);
       buttonPattern.push(randomNum);
       this.setState({buttonPattern: buttonPattern});
       setTimeout(() => {this.computerPlayButtonPattern();}, 1200);
