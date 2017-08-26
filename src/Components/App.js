@@ -102,9 +102,18 @@ class App extends React.Component {
         states.isPlayersTurn = false;
         this.randomButtonGenerator();
       }
-    } else {console.log("Sorry incorrect match.");}
-
-    this.setState({...states});
+      this.setState({...states});
+    } else { // This block handles if an incorrect button is pushed.
+      if (!this.state.strict) {
+        states.isPlayersTurn = false;
+        setTimeout(() => {this.computerPlayButtonPattern();}, 1000);
+      } else {
+        console.log("Strict mode enabled!");
+        states.isPlayersTurn = false;
+        this.randomButtonGenerator(true);
+      }
+      this.setState({isplayersTurn: false});
+    }
   }
 
   render() {
@@ -140,6 +149,7 @@ class App extends React.Component {
           sound={new Audio(simonSound3)}
           playerSelectButton={this.playerSelectButton}
           isPlayersTurn={this.state.isPlayersTurn}
+          gameOn={this.state.gameOn}
         />
         <div id="game-control-wrapper">
           <h1>Simon Game</h1>
