@@ -3,7 +3,7 @@
 .color-buttons {
   flex-basis: 45%;
   height: 284px;
-  border: solid 7px black;
+  border: solid 7px $borderColor;
   transition: background-color 800ms;
   cursor: pointer;
 }
@@ -11,8 +11,8 @@
 #btn-0 {
   background-color: $green;
   border-top-left-radius: 100%;
-  border-top: solid 15px black;
-  border-left: solid 15px black;
+  border-top: solid 15px $borderColor;
+  border-left: solid 15px $borderColor;
 }
 
 .active-green {
@@ -22,8 +22,8 @@
 #btn-1 {
   background-color: $red;
   border-top-right-radius: 100%;
-  border-top: solid 15px black;
-  border-right: solid 15px black;
+  border-top: solid 15px $borderColor;
+  border-right: solid 15px $borderColor;
 }
 
 .active-red {
@@ -33,8 +33,8 @@
 #btn-2 {
   background-color: $yellow;
   border-bottom-left-radius: 100%;
-  border-bottom: solid 15px black;
-  border-left: solid 15px black;
+  border-bottom: solid 15px $borderColor;
+  border-left: solid 15px $borderColor;
 }
 
 .active-yellow {
@@ -44,8 +44,8 @@
 #btn-3 {
   background-color: $blue;
   border-bottom-right-radius: 100%;
-  border-bottom: solid 15px black;
-  border-right: solid 15px black;
+  border-bottom: solid 15px $borderColor;
+  border-right: solid 15px $borderColor;
 }
 
 .active-blue {
