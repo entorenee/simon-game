@@ -1,10 +1,21 @@
+@import './vars.scss';
+
 #power-button-wrapper {
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 15%;
+  width: 80%;
   height: 25px;
+  padding-bottom: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: $screenBreak) {
+    font-size: 12px;
+    height: 15px;
+    margin-top: 7%;
+    width: 60%;
+  }
 }
 
 #toggle-power {

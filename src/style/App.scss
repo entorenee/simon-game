@@ -7,13 +7,19 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 75px;
+  margin-top: 8%;
+  margin-bottom: 8%;
   position: relative;
+
+  @media screen and (max-width: $screenBreak) {
+    max-width: 375px;
+  }
 }
 
 #game-control-wrapper {
-  width: 300px;
-  height: 300px;
+  width: 50%;
+  height: 0;
+  padding-bottom: 50%;
   background-color: #ddd;
   border-radius: 50%;
   border: solid 15px $borderColor;
@@ -28,6 +34,10 @@
     font-family: 'Ultra', serif;
     font-size: 48px;
     margin-bottom: 5%;
+
+    @media screen and (max-width: $screenBreak) {
+      font-size: 30px;
+    }
   }
 }
 
@@ -35,4 +45,8 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+
+  @media screen and (max-width: $screenBreak) {
+    font-size: 9px;
+  }
 }

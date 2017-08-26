@@ -1,9 +1,16 @@
+@import './vars.scss';
+
 #counter-wrap {
   width: 60px;
   height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: $screenBreak) {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 #count-label {
@@ -23,6 +30,10 @@
 #current-count {
   font-size: 24px;
   color: red;
+
+  @media screen and (max-width: $screenBreak) {
+    font-size: 15px;
+  }
 }
 
 .counter-blink {
