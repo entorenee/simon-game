@@ -20,7 +20,8 @@ class App extends React.Component {
       strict: false,
       isPlayersTurn: false,
       buttonPattern: [],
-      playerCopyPattern: []
+      playerCopyPattern: [],
+      moveCount: "--"
     }
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
@@ -41,7 +42,8 @@ class App extends React.Component {
         strict: false,
         isPlayersTurn: false,
         buttonPattern: [],
-        playerCopyPattern: []
+        playerCopyPattern: [],
+        moveCount: "--"
       }
 
     }
@@ -64,7 +66,10 @@ class App extends React.Component {
       var buttonPattern = !clear ? this.state.buttonPattern : [];
       var randomNum = Math.floor(Math.random() * 4);
       buttonPattern.push(randomNum);
-      this.setState({buttonPattern: buttonPattern});
+      this.setState({
+        buttonPattern: buttonPattern,
+        moveCount: buttonPattern.length
+      });
       setTimeout(() => {this.computerPlayButtonPattern();}, 1200);
     } else {
       console.log("The parameter passed to randomButtonGenerator must be a boolean.");
@@ -72,6 +77,11 @@ class App extends React.Component {
   }
 
   computerPlayButtonPattern(counter = 0) {
+    var states = {
+      isPlayersTurn: true,
+      playerCopyPattern: []
+    };
+    states.moveCount = this.state.moveCount === "! !" ? this.state.buttonPattern.length : this.state.moveCount;
     var activeColors = ["active-green", "active-red", "active-yellow", "active-blue"];
     var pattern = this.state.buttonPattern;
     var id = pattern[counter];
@@ -85,16 +95,13 @@ class App extends React.Component {
         counter++;
         this.computerPlayButtonPattern(counter);
       } else {
-        this.setState({
-          isPlayersTurn: true,
-          playerCopyPattern: []
-        });
+        this.setState({...states});
       }
     }, 800);
   }
 
   playerSelectButton(button) {
-    var states = {...this.state};
+    var states = {playerCopyPattern: this.state.playerCopyPattern};
     var playerIndex = this.state.playerCopyPattern.length;
     if (button === this.state.buttonPattern[playerIndex]) {
       states.playerCopyPattern.push(button);
@@ -106,13 +113,15 @@ class App extends React.Component {
     } else { // This block handles if an incorrect button is pushed.
       if (!this.state.strict) {
         states.isPlayersTurn = false;
-        setTimeout(() => {this.computerPlayButtonPattern();}, 1000);
+        setTimeout(() => {this.computerPlayButtonPattern();}, 2000);
       } else {
-        console.log("Strict mode enabled!");
         states.isPlayersTurn = false;
         this.randomButtonGenerator(true);
       }
-      this.setState({isplayersTurn: false});
+      this.setState({
+        isplayersTurn: false,
+        moveCount: "! !"
+      });
     }
   }
 
@@ -155,7 +164,7 @@ class App extends React.Component {
           <h1>Simon Game</h1>
           <div id="game-controls">
             <Counter
-              moveCount={this.state.buttonPattern.length}
+              moveCount={String(this.state.moveCount)}
               gameOn={this.state.gameOn}
             />
             <Start startGame={this.startGame}/>

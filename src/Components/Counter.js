@@ -4,8 +4,14 @@ import '../style/Counter.css';
 
 class Counter extends React.Component {
   render() {
-    var moveCountDisplay = this.props.gameOn === false ? "" : this.props.gameOn === true && this.props.moveCount !== 0 ? this.props.moveCount : "--";
+    var moveCountString = this.props.moveCount < 10 ? "0" + this.props.moveCount : this.props.moveCount;
+    var moveCountDisplay = this.props.gameOn === false ? "" : this.props.gameOn === true && this.props.moveCount !== 0 ? moveCountString : "--";
 
+    if (moveCountDisplay === "! !") {
+      var ele = document.getElementById('current-count');
+      ele.classList.add('counter-blink');
+      setTimeout(() => {ele.classList.remove('counter-blink');}, 1700);
+    }
     return (
       <div id="counter-wrap">
         <div id="counter-display">
@@ -18,7 +24,7 @@ class Counter extends React.Component {
 }
 
 Counter.propTypes = {
-  moveCount: PropTypes.number.isRequired,
+  moveCount: PropTypes.string.isRequired,
   gameOn: PropTypes.bool.isRequired
 }
 
