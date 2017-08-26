@@ -106,8 +106,14 @@ class App extends React.Component {
     if (button === this.state.buttonPattern[playerIndex]) {
       states.playerCopyPattern.push(button);
       if (states.playerCopyPattern.length === this.state.buttonPattern.length) {
-        states.isPlayersTurn = false;
-        this.randomButtonGenerator();
+        if (this.state.buttonPattern.length === 20) { // Determine if the user has won
+          states.isPlayersTurn = false;
+          states.moveCount = "WIN!";
+          setTimeout(() => {this.randomButtonGenerator(true)}, 3000);
+        } else {
+          states.isPlayersTurn = false;
+          this.randomButtonGenerator();
+        }
       }
       this.setState({...states});
     } else { // This block handles if an incorrect button is pushed.
