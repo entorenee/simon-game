@@ -169,7 +169,7 @@ class App extends React.Component {
           gameOn={this.state.gameOn}
         />
         <div id="game-control-wrapper">
-          <h1>Simon Game</h1>
+          <h1>Simon</h1>
           <div id="game-controls">
             <Counter
               moveCount={String(this.state.moveCount)}
