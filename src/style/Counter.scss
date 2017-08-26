@@ -17,11 +17,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  background-color: #4F0200;
 }
 
 #current-count {
   font-size: 24px;
+  color: red;
 }
 
 .counter-blink {
