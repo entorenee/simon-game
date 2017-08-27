@@ -88,17 +88,19 @@ class App extends React.Component {
     var id = pattern[counter];
     var sound = id === 0 ? new Audio(simonSound0) : id === 1 ? new Audio(simonSound1) : id === 2 ? new Audio(simonSound2) : new Audio(simonSound3);
     var el = document.getElementById('btn-' + id);
-    el.classList.add(activeColors[id]);
-    sound.play();
-    setTimeout(() => {
-      el.classList.remove(activeColors[id]);
-      if (counter < pattern.length - 1) {
-        counter++;
-        this.computerPlayButtonPattern(counter);
-      } else {
-        this.setState({...states});
-      }
-    }, 800);
+    if (this.state.gameOn) {
+      el.classList.add(activeColors[id]);
+      sound.play();
+      setTimeout(() => {
+        el.classList.remove(activeColors[id]);
+        if (counter < pattern.length - 1) {
+          counter++;
+          this.computerPlayButtonPattern(counter);
+        } else {
+          this.setState({...states});
+        }
+      }, 800);
+    }
   }
 
   playerSelectButton(button) {
