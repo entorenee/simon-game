@@ -4,12 +4,12 @@
   width: 45%;
   border: solid 7px $borderColor;
   transition: background-color 800ms;
+  cursor: pointer;
 
   &::before {
     content: '';
     padding-top: 100%;
     float: left;
-    cursor: pointer;
   }
 
   @media screen and (max-width: $screenBreak) {
