@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import '../style/Counter.css';
 
 class Counter extends React.Component {
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.moveCount !== nextProps.moveCount || this.props.gameOn !== nextProps.gameOn) {
+      console.log("Updated!");
+      return true;
+    }
+    return false;
+  }
+
   render() {
     var moveCountString = this.props.moveCount < 10 ? "0" + this.props.moveCount : this.props.moveCount;
     var moveCountDisplay = this.props.gameOn === false ? "" : this.props.gameOn === true && this.props.moveCount !== 0 ? moveCountString : "--";

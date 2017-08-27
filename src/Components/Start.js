@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import '../style/Start.css';
 
 class Start extends React.Component {
+
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     return (
       <div id="start-button-wrapper">
