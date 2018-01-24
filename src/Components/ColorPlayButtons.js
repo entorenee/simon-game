@@ -27,14 +27,14 @@ class ColorPlayButtons extends React.Component {
     return (
       <div
         id={`btn-${this.props.id}`}
-        className="color-buttons"
+        className={`color-buttons btn-${this.props.id}`}
         onMouseDown={() => {
-          if (this.props.isPlayersTurn && this.props.gameOn) {
+          if (isPlayersTurn && gameOn) {
             this.addActiveClass();
           }
         }}
         onMouseUp={() => {
-          if (this.props.isPlayersTurn) {
+          if (isPlayersTurn) {
             this.clickButton();
           }
         }}
