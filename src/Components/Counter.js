@@ -3,23 +3,29 @@ import PropTypes from 'prop-types';
 import '../style/Counter.css';
 
 class Counter extends React.Component {
-
   shouldComponentUpdate(nextProps) {
     if (this.props.moveCount !== nextProps.moveCount || this.props.gameOn !== nextProps.gameOn) {
-      console.log("Updated!");
       return true;
     }
     return false;
   }
 
   render() {
-    var moveCountString = this.props.moveCount < 10 ? "0" + this.props.moveCount : this.props.moveCount;
-    var moveCountDisplay = this.props.gameOn === false ? "" : this.props.gameOn === true && this.props.moveCount !== 0 ? moveCountString : "--";
+    const moveCountString =
+      this.props.moveCount < 10 ? `0${this.props.moveCount}` : this.props.moveCount;
+    let moveCountDisplay;
+    if (!this.props.gameOn) {
+      moveCountDisplay = '';
+    } else {
+      moveCountDisplay = this.props.moveCount !== 0 ? moveCountString : '--';
+    }
 
-    if (moveCountDisplay === "! !" || moveCountDisplay === "WIN!") {
-      var ele = document.getElementById('current-count');
+    if (moveCountDisplay === '! !' || moveCountDisplay === 'WIN!') {
+      const ele = document.getElementById('current-count');
       ele.classList.add('counter-blink');
-      setTimeout(() => {ele.classList.remove('counter-blink');}, 1700);
+      setTimeout(() => {
+        ele.classList.remove('counter-blink');
+      }, 1700);
     }
     return (
       <div id="counter-wrap">
@@ -28,13 +34,13 @@ class Counter extends React.Component {
         </div>
         <span id="count-label">COUNT</span>
       </div>
-    )
+    );
   }
 }
 
 Counter.propTypes = {
   moveCount: PropTypes.string.isRequired,
   gameOn: PropTypes.bool.isRequired
-}
+};
 
 export default Counter;

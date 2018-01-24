@@ -12,7 +12,6 @@ import buzzer from '../sounds/buzzer.mp3';
 import '../style/App.css';
 
 class App extends React.Component {
-
   constructor() {
     super();
 
@@ -22,8 +21,8 @@ class App extends React.Component {
       isPlayersTurn: false,
       buttonPattern: [],
       playerCopyPattern: [],
-      moveCount: "--"
-    }
+      moveCount: '--'
+    };
 
     this.toggleGamePower = this.toggleGamePower.bind(this);
     this.toggleStrict = this.toggleStrict.bind(this);
@@ -34,7 +33,7 @@ class App extends React.Component {
   }
 
   toggleGamePower() {
-    var powerState = {gameOn: this.state.gameOn};
+    let powerState = { gameOn: this.state.gameOn };
     if (this.state.gameOn === false) {
       powerState.gameOn = true;
     } else {
@@ -44,100 +43,129 @@ class App extends React.Component {
         isPlayersTurn: false,
         buttonPattern: [],
         playerCopyPattern: [],
-        moveCount: "--"
-      }
-
+        moveCount: '--'
+      };
     }
-    this.setState({...powerState});
+    this.setState({ ...powerState });
   }
 
   toggleStrict() {
-    var strictState = !this.state.strict;
-    this.setState({strict: strictState});
+    const strictState = !this.state.strict;
+    this.setState({ strict: strictState });
   }
 
   startGame() {
     if (this.state.gameOn) {
-      this.state.buttonPattern.length === 0 ? this.randomButtonGenerator() : this.randomButtonGenerator(true);
+      if (this.state.buttonPattern.length === 0) {
+        this.randomButtonGenerator();
+      } else {
+        this.randomButtonGenerator(true);
+      }
     }
   }
 
   randomButtonGenerator(clear = false) {
-    if (typeof clear === "boolean") {
-      var buttonPattern = !clear ? this.state.buttonPattern : [];
-      var randomNum = Math.floor(Math.random() * 4);
+    if (typeof clear === 'boolean') {
+      const buttonPattern = !clear ? this.state.buttonPattern : [];
+      const randomNum = Math.floor(Math.random() * 4);
       buttonPattern.push(randomNum);
       this.setState({
-        buttonPattern: buttonPattern,
+        buttonPattern,
         moveCount: buttonPattern.length
       });
-      setTimeout(() => {this.computerPlayButtonPattern();}, 1200);
+      setTimeout(() => {
+        this.computerPlayButtonPattern();
+      }, 1200);
     } else {
-      console.log("The parameter passed to randomButtonGenerator must be a boolean.");
+      console.log('The parameter passed to randomButtonGenerator must be a boolean.');
     }
   }
 
-  computerPlayButtonPattern(counter = 0) {
-    var states = {
+  computerPlayButtonPattern(count = 0) {
+    let counter = count;
+    const states = {
       isPlayersTurn: true,
       playerCopyPattern: []
     };
-    states.moveCount = this.state.moveCount === "! !" ? this.state.buttonPattern.length : this.state.moveCount;
-    var activeColors = ["active-green", "active-red", "active-yellow", "active-blue"];
-    var pattern = this.state.buttonPattern;
-    var id = pattern[counter];
-    var sound = id === 0 ? new Audio(simonSound0) : id === 1 ? new Audio(simonSound1) : id === 2 ? new Audio(simonSound2) : new Audio(simonSound3);
-    var el = document.getElementById('btn-' + id);
+    states.moveCount =
+      this.state.moveCount === '! !' ? this.state.buttonPattern.length : this.state.moveCount;
+    const activeColors = ['active-green', 'active-red', 'active-yellow', 'active-blue'];
+    const pattern = this.state.buttonPattern;
+    const id = pattern[counter];
+    let sound;
+    switch (id) {
+      case 0:
+        sound = new Audio(simonSound0);
+        break;
+      case 1:
+        sound = new Audio(simonSound1);
+        break;
+      case 2:
+        sound = new Audio(simonSound2);
+        break;
+      case 3:
+        sound = new Audio(simonSound3);
+        break;
+      default:
+        console.warn('Invalid sound id passed!');
+    }
+
+    const el = document.getElementById(`btn-${id}`);
     if (this.state.gameOn) {
       el.classList.add(activeColors[id]);
       sound.play();
       setTimeout(() => {
         el.classList.remove(activeColors[id]);
         if (counter < pattern.length - 1) {
-          counter++;
+          counter += 1;
           this.computerPlayButtonPattern(counter);
         } else {
-          this.setState({...states});
+          this.setState({ ...states });
         }
       }, 800);
     }
   }
 
   playerSelectButton(button) {
-    var states = {playerCopyPattern: this.state.playerCopyPattern};
-    var playerIndex = this.state.playerCopyPattern.length;
+    const states = { playerCopyPattern: this.state.playerCopyPattern };
+    const playerIndex = this.state.playerCopyPattern.length;
     if (button === this.state.buttonPattern[playerIndex]) {
       states.playerCopyPattern.push(button);
       if (states.playerCopyPattern.length === this.state.buttonPattern.length) {
-        if (this.state.buttonPattern.length === 20) { // Determine if the user has won
+        if (this.state.buttonPattern.length === 20) {
+          // Determine if the user has won
           states.isPlayersTurn = false;
-          states.moveCount = "WIN!";
-          setTimeout(() => {this.randomButtonGenerator(true)}, 3000);
+          states.moveCount = 'WIN!';
+          setTimeout(() => {
+            this.randomButtonGenerator(true);
+          }, 3000);
         } else {
           states.isPlayersTurn = false;
           this.randomButtonGenerator();
         }
       }
-      this.setState({...states});
-    } else { // This block handles if an incorrect button is pushed.
-      var buzzerSound = new Audio(buzzer);
+      this.setState({ ...states });
+    } else {
+      // This block handles if an incorrect button is pushed.
+      const buzzerSound = new Audio(buzzer);
       if (!this.state.strict) {
         buzzerSound.play();
-        setTimeout(() => {this.computerPlayButtonPattern();}, 2000);
+        setTimeout(() => {
+          this.computerPlayButtonPattern();
+        }, 2000);
       } else {
         buzzerSound.play();
         this.randomButtonGenerator(true);
       }
       this.setState({
-        isplayersTurn: false,
-        moveCount: "! !"
+        moveCount: '! !'
       });
     }
   }
 
   render() {
     return (
-      <div id="game">
+      <div className="game">
         <ColorPlayButtons
           id="0"
           activeClass="active-green"
@@ -170,26 +198,17 @@ class App extends React.Component {
           isPlayersTurn={this.state.isPlayersTurn}
           gameOn={this.state.gameOn}
         />
-        <div id="game-control-wrapper">
+        <div className="game-control-wrapper">
           <h1>Simon</h1>
-          <div id="game-controls">
-            <Counter
-              moveCount={String(this.state.moveCount)}
-              gameOn={this.state.gameOn}
-            />
-            <Start startGame={this.startGame}/>
-            <Strict
-              toggleStrict={this.toggleStrict}
-              isStrict={this.state.strict}
-            />
+          <div className="game-controls">
+            <Counter moveCount={String(this.state.moveCount)} gameOn={this.state.gameOn} />
+            <Start startGame={this.startGame} />
+            <Strict toggleStrict={this.toggleStrict} isStrict={this.state.strict} />
           </div>
-          <PowerButton
-            toggleGamePower = {this.toggleGamePower}
-            gameOn = {this.state.gameOn}
-          />
+          <PowerButton toggleGamePower={this.toggleGamePower} gameOn={this.state.gameOn} />
         </div>
       </div>
-    )
+    );
   }
 }
 
