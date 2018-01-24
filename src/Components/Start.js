@@ -9,9 +9,9 @@ class Start extends React.Component {
 
   render() {
     return (
-      <div id="start-button-wrapper">
+      <div className="start-button-wrapper">
         <div
-          id="start-button"
+          className="start-button"
           onClick={() => this.props.startGame()}
           onKeyPress={e => {
             if (e.which === 13 || e.which === 32) this.props.startGame();

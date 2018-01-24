@@ -21,18 +21,25 @@ class Counter extends React.Component {
     }
 
     if (moveCountDisplay === '! !' || moveCountDisplay === 'WIN!') {
-      const ele = document.getElementById('current-count');
+      const ele = this.currentCount;
       ele.classList.add('counter-blink');
       setTimeout(() => {
         ele.classList.remove('counter-blink');
       }, 1700);
     }
     return (
-      <div id="counter-wrap">
-        <div id="counter-display">
-          <span id="current-count">{moveCountDisplay}</span>
+      <div className="counter-wrap">
+        <div className="counter-display">
+          <span
+            className="current-count"
+            ref={input => {
+              this.currentCount = input;
+            }}
+          >
+            {moveCountDisplay}
+          </span>
         </div>
-        <span id="count-label">COUNT</span>
+        <span className="count-label">COUNT</span>
       </div>
     );
   }

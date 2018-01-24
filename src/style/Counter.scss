@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-#counter-wrap {
+.counter-wrap {
   width: 60px;
   height: 60px;
   display: flex;
@@ -13,21 +13,21 @@
   }
 }
 
-#count-label {
+.count-label {
   margin-top: 5px;
 }
 
-#counter-display {
+.counter-display {
   width: 100%;
   height: 80%;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #4F0200;
+  background-color: #4f0200;
 }
 
-#current-count {
+.current-count {
   font-size: 24px;
   color: red;
 

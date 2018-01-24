@@ -11,7 +11,7 @@ class Strict extends React.Component {
   }
 
   componentDidUpdate() {
-    const btnElement = document.getElementById('strict-mode-light');
+    const btnElement = this.strictLight;
     if (this.props.isStrict) {
       btnElement.style.backgroundColor = 'red';
     } else {
@@ -21,10 +21,15 @@ class Strict extends React.Component {
 
   render() {
     return (
-      <div id="strict-button-wrapper">
-        <div id="strict-mode-light" />
+      <div className="strict-button-wrapper">
         <div
-          id="strict-mode-button"
+          className="strict-mode-light"
+          ref={input => {
+            this.strictLight = input;
+          }}
+        />
+        <div
+          className="strict-mode-button"
           onClick={() => this.props.toggleStrict()}
           onKeyPress={e => {
             if (e.which === 13 || e.which === 32) this.props.toggleStrict();

@@ -18,7 +18,7 @@
   }
 }
 
-#btn-0 {
+.btn-0 {
   background-color: $green;
   border-top-left-radius: 100%;
   border-top: solid 15px $borderColor;
@@ -29,7 +29,7 @@
   background-color: $greenActive !important;
 }
 
-#btn-1 {
+.btn-1 {
   background-color: $red;
   border-top-right-radius: 100%;
   border-top: solid 15px $borderColor;
@@ -40,7 +40,7 @@
   background-color: $redActive !important;
 }
 
-#btn-2 {
+.btn-2 {
   background-color: $yellow;
   border-bottom-left-radius: 100%;
   border-bottom: solid 15px $borderColor;
@@ -51,7 +51,7 @@
   background-color: $yellowActive !important;
 }
 
-#btn-3 {
+.btn-3 {
   background-color: $blue;
   border-bottom-right-radius: 100%;
   border-bottom: solid 15px $borderColor;

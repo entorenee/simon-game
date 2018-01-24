@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-#game {
+.game {
   max-width: 600px;
   display: flex;
   flex-wrap: wrap;
@@ -16,7 +16,7 @@
   }
 }
 
-#game-control-wrapper {
+.game-control-wrapper {
   width: 50%;
   height: 0;
   padding-bottom: 50%;
@@ -42,7 +42,7 @@
   }
 }
 
-#game-controls {
+.game-controls {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;

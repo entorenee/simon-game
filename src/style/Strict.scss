@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-#strict-button-wrapper {
+.strict-button-wrapper {
   width: 65px;
   height: 65px;
   display: flex;
@@ -14,7 +14,7 @@
   }
 }
 
-#strict-mode-light {
+.strict-mode-light {
   width: 15%;
   height: 0;
   padding-bottom: 15%;
@@ -24,7 +24,7 @@
   transition: background-color 800ms;
 }
 
-#strict-mode-button {
+.strict-mode-button {
   width: 30%;
   height: 0;
   padding-bottom: 30%;

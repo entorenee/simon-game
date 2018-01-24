@@ -1,6 +1,6 @@
 @import './vars.scss';
 
-#power-button-wrapper {
+.power-button-wrapper {
   margin: 0 auto;
   margin-top: 15%;
   width: 80%;
@@ -18,7 +18,7 @@
   }
 }
 
-#toggle-power {
+.toggle-power {
   width: 60px;
   height: inherit;
   display: inline-block;
@@ -26,7 +26,7 @@
   background-color: black;
 }
 
-#toggle-power-button {
+.toggle-power-button {
   width: 50%;
   height: inherit;
   display: inline-block;
@@ -34,7 +34,8 @@
   transition: transform 500ms;
 }
 
-.power-identifiers, #toggle-power {
+.power-identifiers,
+.toggle-power {
   margin-right: 8px;
 }
 
