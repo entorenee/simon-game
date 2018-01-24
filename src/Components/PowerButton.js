@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../style/PowerButton.css';
 
-class PowerButton extends React.Component {
+class PowerButton extends Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.gameOn !== nextProps.gameOn) {
       return true;

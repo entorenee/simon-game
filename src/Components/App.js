@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ColorPlayButtons from './ColorPlayButtons';
 import Counter from './Counter';
 import Start from './Start';
@@ -11,7 +11,7 @@ import simonSound3 from '../sounds/simonSound3.mp3';
 import buzzer from '../sounds/buzzer.mp3';
 import '../style/App.css';
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
 

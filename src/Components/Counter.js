@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../style/Counter.css';
 
-class Counter extends React.Component {
+class Counter extends Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.moveCount !== nextProps.moveCount || this.props.gameOn !== nextProps.gameOn) {
       return true;

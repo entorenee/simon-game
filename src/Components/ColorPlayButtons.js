@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../style/ColorPlayButtons.css';
 
-class ColorPlayButtons extends React.Component {
+class ColorPlayButtons extends Component {
   constructor() {
     super();
     this.addActiveClass = this.addActiveClass.bind(this);

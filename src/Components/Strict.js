@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../style/Strict.css';
 
-class Strict extends React.Component {
+class Strict extends Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.isStrict !== nextProps.isStrict) {
       return true;

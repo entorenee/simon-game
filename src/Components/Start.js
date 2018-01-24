@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../style/Start.css';
 
-class Start extends React.Component {
+class Start extends Component {
   shouldComponentUpdate() {
     return false;
   }
