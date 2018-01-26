@@ -166,47 +166,51 @@ class App extends Component {
   render() {
     const { isPlayersTurn, gameOn, moveCount, strict } = this.state; // eslint-disable-line
     return (
-      <div className="game">
-        <ColorPlayButtons
-          id="0"
-          activeClass="active-green"
-          sound={new Audio(simonSound0)}
-          playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={isPlayersTurn}
-          gameOn={gameOn}
-        />
-        <ColorPlayButtons
-          id="1"
-          activeClass="active-red"
-          sound={new Audio(simonSound1)}
-          playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={isPlayersTurn}
-          gameOn={gameOn}
-        />
-        <ColorPlayButtons
-          id="2"
-          activeClass="active-yellow"
-          sound={new Audio(simonSound2)}
-          playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={isPlayersTurn}
-          gameOn={gameOn}
-        />
-        <ColorPlayButtons
-          id="3"
-          activeClass="active-blue"
-          sound={new Audio(simonSound3)}
-          playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={isPlayersTurn}
-          gameOn={gameOn}
-        />
-        <div className="game-control-wrapper">
-          <h1>Simon</h1>
-          <div className="game-controls">
-            <Counter moveCount={String(moveCount)} gameOn={gameOn} />
-            <Start startGame={this.startGame} />
-            <Strict toggleStrict={this.toggleStrict} isStrict={strict} />
+      <div className="app-container">
+        <div className="game">
+          <ColorPlayButtons
+            id="0"
+            activeClass="active-green"
+            sound={new Audio(simonSound0)}
+            playerSelectButton={this.playerSelectButton}
+            isPlayersTurn={isPlayersTurn}
+            gameOn={gameOn}
+          />
+          <ColorPlayButtons
+            id="1"
+            activeClass="active-red"
+            sound={new Audio(simonSound1)}
+            playerSelectButton={this.playerSelectButton}
+            isPlayersTurn={isPlayersTurn}
+            gameOn={gameOn}
+          />
+          <ColorPlayButtons
+            id="2"
+            activeClass="active-yellow"
+            sound={new Audio(simonSound2)}
+            playerSelectButton={this.playerSelectButton}
+            isPlayersTurn={isPlayersTurn}
+            gameOn={gameOn}
+          />
+          <ColorPlayButtons
+            id="3"
+            activeClass="active-blue"
+            sound={new Audio(simonSound3)}
+            playerSelectButton={this.playerSelectButton}
+            isPlayersTurn={isPlayersTurn}
+            gameOn={gameOn}
+          />
+          <div className="test">
+            <div className="game-control-wrapper">
+              <h1>Simon</h1>
+              <div className="game-controls">
+                <Counter moveCount={String(moveCount)} gameOn={gameOn} />
+                <Start startGame={this.startGame} />
+                <Strict toggleStrict={this.toggleStrict} isStrict={strict} />
+              </div>
+              <PowerButton toggleGamePower={this.toggleGamePower} gameOn={gameOn} />
+            </div>
           </div>
-          <PowerButton toggleGamePower={this.toggleGamePower} gameOn={gameOn} />
         </div>
       </div>
     );

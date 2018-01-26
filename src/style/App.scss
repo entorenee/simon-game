@@ -1,4 +1,11 @@
 @import './vars.scss';
+@import url('https://fonts.googleapis.com/css?family=Ultra');
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #aaa;
+}
 
 .game {
   max-width: 600px;
@@ -7,8 +14,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 8%;
-  margin-bottom: 8%;
+  padding-top: 6%;
   position: relative;
 
   @media screen and (max-width: $screenBreak) {
@@ -16,14 +22,19 @@
   }
 }
 
+.test {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .game-control-wrapper {
   width: 50%;
   background-color: #ddd;
   border-radius: 50%;
   border: solid 15px $borderColor;
-  position: absolute;
-  top: 23%;
-  left: 25%;
   user-select: none;
   cursor: default;
 
@@ -32,6 +43,7 @@
     margin-top: 20%;
     font-family: 'Ultra', serif;
     font-size: 48px;
+    color: black;
     margin-bottom: 5%;
 
     @media screen and (max-width: $screenBreak) {
@@ -42,6 +54,8 @@
 
 .game-controls {
   display: flex;
+  width: 95%;
+  margin: 0 auto;
   justify-content: space-around;
   align-items: flex-end;
 
