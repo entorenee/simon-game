@@ -11,10 +11,10 @@
   justify-content: center;
 
   @media screen and (max-width: $screenBreak) {
-    font-size: 12px;
+    font-size: 11px;
     height: 15px;
     margin-top: 7%;
-    width: 60%;
+    width: 55%;
   }
 }
 
@@ -37,6 +37,10 @@
 .power-identifiers,
 .toggle-power {
   margin-right: 8px;
+
+  @media screen and (max-width: $screenBreak) {
+    margin-right: 5px;
+  }
 }
 
 .power-on {
