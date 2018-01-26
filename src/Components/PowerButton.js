@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { keyboardHandler } from '../helpers';
 import '../style/PowerButton.css';
 
 class PowerButton extends Component {
@@ -20,14 +21,15 @@ class PowerButton extends Component {
   }
 
   render() {
+    const { toggleGamePower } = this.props;
     return (
       <div className="power-button-wrapper">
         <span className="power-identifiers">OFF</span>
         <div
           className="toggle-power"
-          onClick={() => this.props.toggleGamePower()}
+          onClick={() => toggleGamePower()}
           onKeyPress={e => {
-            if (e.which === 13 || e.which === 32) this.props.toggleGamePower();
+            if (keyboardHandler(e)) toggleGamePower();
           }}
           role="button"
           tabIndex={0}

@@ -164,6 +164,7 @@ class App extends Component {
   }
 
   render() {
+    const { isPlayersTurn, gameOn, moveCount, strict } = this.state; // eslint-disable-line
     return (
       <div className="game">
         <ColorPlayButtons
@@ -171,41 +172,41 @@ class App extends Component {
           activeClass="active-green"
           sound={new Audio(simonSound0)}
           playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={this.state.isPlayersTurn}
-          gameOn={this.state.gameOn}
+          isPlayersTurn={isPlayersTurn}
+          gameOn={gameOn}
         />
         <ColorPlayButtons
           id="1"
           activeClass="active-red"
           sound={new Audio(simonSound1)}
           playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={this.state.isPlayersTurn}
-          gameOn={this.state.gameOn}
+          isPlayersTurn={isPlayersTurn}
+          gameOn={gameOn}
         />
         <ColorPlayButtons
           id="2"
           activeClass="active-yellow"
           sound={new Audio(simonSound2)}
           playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={this.state.isPlayersTurn}
-          gameOn={this.state.gameOn}
+          isPlayersTurn={isPlayersTurn}
+          gameOn={gameOn}
         />
         <ColorPlayButtons
           id="3"
           activeClass="active-blue"
           sound={new Audio(simonSound3)}
           playerSelectButton={this.playerSelectButton}
-          isPlayersTurn={this.state.isPlayersTurn}
-          gameOn={this.state.gameOn}
+          isPlayersTurn={isPlayersTurn}
+          gameOn={gameOn}
         />
         <div className="game-control-wrapper">
           <h1>Simon</h1>
           <div className="game-controls">
-            <Counter moveCount={String(this.state.moveCount)} gameOn={this.state.gameOn} />
+            <Counter moveCount={String(moveCount)} gameOn={gameOn} />
             <Start startGame={this.startGame} />
-            <Strict toggleStrict={this.toggleStrict} isStrict={this.state.strict} />
+            <Strict toggleStrict={this.toggleStrict} isStrict={strict} />
           </div>
-          <PowerButton toggleGamePower={this.toggleGamePower} gameOn={this.state.gameOn} />
+          <PowerButton toggleGamePower={this.toggleGamePower} gameOn={gameOn} />
         </div>
       </div>
     );

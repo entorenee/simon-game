@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { keyboardHandler } from '../helpers';
 import '../style/ColorPlayButtons.css';
 
 class ColorPlayButtons extends Component {
@@ -22,12 +23,12 @@ class ColorPlayButtons extends Component {
   }
 
   render() {
-    const { isPlayersTurn, gameOn } = this.props;
+    const { isPlayersTurn, gameOn, id } = this.props;
 
     return (
       <div
-        id={`btn-${this.props.id}`}
-        className={`color-buttons btn-${this.props.id}`}
+        id={`btn-${id}`}
+        className={`color-buttons btn-${id}`}
         onMouseDown={() => {
           if (isPlayersTurn && gameOn) {
             this.addActiveClass();
@@ -39,11 +40,9 @@ class ColorPlayButtons extends Component {
           }
         }}
         onKeyPress={e => {
-          if (e.which === 13 || e.which === 32) {
-            if (isPlayersTurn && gameOn) {
-              this.addActiveClass();
-              this.clickButton();
-            }
+          if (keyboardHandler(e) && isPlayersTurn && gameOn) {
+            this.addActiveClass();
+            this.clickButton();
           }
         }}
         role="button"

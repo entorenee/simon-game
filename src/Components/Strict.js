@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { keyboardHandler } from '../helpers';
 import '../style/Strict.css';
 
 class Strict extends Component {
@@ -20,6 +21,7 @@ class Strict extends Component {
   }
 
   render() {
+    const { toggleStrict } = this.props;
     return (
       <div className="strict-button-wrapper">
         <div
@@ -30,9 +32,9 @@ class Strict extends Component {
         />
         <div
           className="strict-mode-button"
-          onClick={() => this.props.toggleStrict()}
+          onClick={() => toggleStrict()}
           onKeyPress={e => {
-            if (e.which === 13 || e.which === 32) this.props.toggleStrict();
+            if (keyboardHandler(e)) toggleStrict();
           }}
           role="button"
           tabIndex={0}

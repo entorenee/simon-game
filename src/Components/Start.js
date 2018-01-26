@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { keyboardHandler } from '../helpers';
 import '../style/Start.css';
 
 class Start extends Component {
@@ -8,13 +9,14 @@ class Start extends Component {
   }
 
   render() {
+    const { startGame } = this.props;
     return (
       <div className="start-button-wrapper">
         <div
           className="start-button"
-          onClick={() => this.props.startGame()}
+          onClick={() => startGame()}
           onKeyPress={e => {
-            if (e.which === 13 || e.which === 32) this.props.startGame();
+            if (keyboardHandler(e)) startGame();
           }}
           role="button"
           tabIndex={0}
