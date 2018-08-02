@@ -21,6 +21,10 @@
   border-radius: 50%;
   border: solid 1px $borderColor;
   transition: background-color 800ms;
+
+  &.strict {
+    background-color: red;
+  }
 }
 
 .strict-mode-button {
