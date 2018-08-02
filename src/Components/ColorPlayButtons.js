@@ -24,15 +24,17 @@ class ColorPlayButtons extends Component {
   }
 
   addActiveClass() {
-    const button = document.getElementById(`btn-${this.props.id}`);
-    this.buttonSounds[this.props.id].play();
-    button.classList.add(this.props.activeClass);
+    const { activeClass, id } = this.props;
+    const button = document.getElementById(`btn-${id}`);
+    this.buttonSounds[id].play();
+    button.classList.add(activeClass);
   }
 
   clickButton() {
-    const button = document.getElementById(`btn-${this.props.id}`);
-    button.classList.remove(this.props.activeClass);
-    this.props.playerSelectButton(Number(this.props.id));
+    const { activeClass, id, playerSelectButton } = this.props;
+    const button = document.getElementById(`btn-${id}`);
+    button.classList.remove(activeClass);
+    playerSelectButton(Number(id));
   }
 
   render() {

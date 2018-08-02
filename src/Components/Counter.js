@@ -4,20 +4,21 @@ import '../style/Counter.css';
 
 class Counter extends Component {
   shouldComponentUpdate(nextProps) {
-    if (this.props.moveCount !== nextProps.moveCount || this.props.gameOn !== nextProps.gameOn) {
+    const { gameOn, moveCount } = this.props;
+    if (moveCount !== nextProps.moveCount || gameOn !== nextProps.gameOn) {
       return true;
     }
     return false;
   }
 
   render() {
-    const moveCountString =
-      this.props.moveCount < 10 ? `0${this.props.moveCount}` : this.props.moveCount;
+    const { gameOn, moveCount } = this.props;
+    const moveCountString = moveCount < 10 ? `0${moveCount}` : moveCount;
     let moveCountDisplay;
-    if (!this.props.gameOn) {
+    if (!gameOn) {
       moveCountDisplay = '';
     } else {
-      moveCountDisplay = this.props.moveCount !== 0 ? moveCountString : '--';
+      moveCountDisplay = moveCount !== 0 ? moveCountString : '--';
     }
 
     if (moveCountDisplay === '! !' || moveCountDisplay === 'WIN!') {

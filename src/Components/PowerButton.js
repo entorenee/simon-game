@@ -5,15 +5,17 @@ import '../style/PowerButton.css';
 
 class PowerButton extends Component {
   shouldComponentUpdate(nextProps) {
-    if (this.props.gameOn !== nextProps.gameOn) {
+    const { gameOn } = this.props;
+    if (gameOn !== nextProps.gameOn) {
       return true;
     }
     return false;
   }
 
   componentDidUpdate() {
+    const { gameOn } = this.props;
     const powerButton = this.togglePower.classList;
-    if (!this.props.gameOn) {
+    if (!gameOn) {
       powerButton.remove('power-on');
     } else {
       powerButton.add('power-on');

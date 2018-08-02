@@ -5,15 +5,17 @@ import '../style/Strict.css';
 
 class Strict extends Component {
   shouldComponentUpdate(nextProps) {
-    if (this.props.isStrict !== nextProps.isStrict) {
+    const { isStrict } = this.props;
+    if (isStrict !== nextProps.isStrict) {
       return true;
     }
     return false;
   }
 
   componentDidUpdate() {
+    const { isStrict } = this.props;
     const btnElement = this.strictLight;
-    if (this.props.isStrict) {
+    if (isStrict) {
       btnElement.style.backgroundColor = 'red';
     } else {
       btnElement.style.backgroundColor = 'black';
