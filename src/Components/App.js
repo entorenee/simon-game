@@ -13,25 +13,14 @@ import buzzer from '../sounds/buzzer.mp3';
 import '../style/App.css';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      gameOn: false,
-      strict: false,
-      isPlayersTurn: false,
-      buttonPattern: [],
-      playerCopyPattern: [],
-      moveCount: '--'
-    };
-
-    this.toggleGamePower = this.toggleGamePower.bind(this);
-    this.toggleStrict = this.toggleStrict.bind(this);
-    this.startGame = this.startGame.bind(this);
-    this.randomButtonGenerator = this.randomButtonGenerator.bind(this);
-    this.computerPlayButtonPattern = this.computerPlayButtonPattern.bind(this);
-    this.playerSelectButton = this.playerSelectButton.bind(this);
-  }
+  state = {
+    gameOn: false,
+    strict: false,
+    isPlayersTurn: false,
+    buttonPattern: [],
+    playerCopyPattern: [],
+    moveCount: '--'
+  };
 
   componentDidMount() {
     this.buzzerSound = new Audio(buzzer);
@@ -43,7 +32,7 @@ class App extends Component {
     ];
   }
 
-  toggleGamePower() {
+  toggleGamePower = () => {
     const { gameOn } = this.state;
     let powerState = { gameOn };
     if (gameOn === false) {
@@ -59,14 +48,14 @@ class App extends Component {
       };
     }
     this.setState({ ...powerState });
-  }
+  };
 
-  toggleStrict() {
+  toggleStrict = () => {
     const { strict } = this.state;
     this.setState({ strict: !strict });
-  }
+  };
 
-  startGame() {
+  startGame = () => {
     const { buttonPattern, gameOn } = this.state;
     if (gameOn) {
       if (buttonPattern.length === 0) {
@@ -75,9 +64,9 @@ class App extends Component {
         this.randomButtonGenerator(true);
       }
     }
-  }
+  };
 
-  randomButtonGenerator(clear = false) {
+  randomButtonGenerator = (clear = false) => {
     const { buttonPattern: prevPattern } = this.state;
     if (typeof clear === 'boolean') {
       const buttonPattern = !clear ? prevPattern : [];
@@ -93,9 +82,9 @@ class App extends Component {
     } else {
       console.log('The parameter passed to randomButtonGenerator must be a boolean.');
     }
-  }
+  };
 
-  computerPlayButtonPattern(count = 0) {
+  computerPlayButtonPattern = (count = 0) => {
     const { buttonPattern, gameOn, moveCount } = this.state;
     let counter = count;
     const states = {
@@ -121,9 +110,9 @@ class App extends Component {
         }
       }, 800);
     }
-  }
+  };
 
-  playerSelectButton(button) {
+  playerSelectButton = button => {
     const { buttonPattern, playerCopyPattern, strict } = this.state;
     const states = { playerCopyPattern };
     const playerIndex = playerCopyPattern.length;
@@ -158,7 +147,7 @@ class App extends Component {
         moveCount: '! !'
       });
     }
-  }
+  };
 
   render() {
     const { isPlayersTurn, gameOn, moveCount, strict } = this.state; // eslint-disable-line
