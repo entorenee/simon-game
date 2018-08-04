@@ -20,7 +20,7 @@ const PowerButton = props => {
       >
         <span
           className={classnames('toggle-power-button', {
-            'power-on': gameOn
+            'power-on': gameOn,
           })}
         />
       </div>
@@ -31,7 +31,7 @@ const PowerButton = props => {
 
 PowerButton.propTypes = {
   toggleGamePower: PropTypes.func.isRequired,
-  gameOn: PropTypes.bool.isRequired
+  gameOn: PropTypes.bool.isRequired,
 };
 
 export default PowerButton;

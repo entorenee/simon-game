@@ -19,7 +19,7 @@ class App extends Component {
     isPlayersTurn: false,
     buttonPattern: [],
     playerCopyPattern: [],
-    moveCount: '--'
+    moveCount: '--',
   };
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class App extends Component {
       new Audio(simonSound0),
       new Audio(simonSound1),
       new Audio(simonSound2),
-      new Audio(simonSound3)
+      new Audio(simonSound3),
     ];
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
         isPlayersTurn: false,
         buttonPattern: [],
         playerCopyPattern: [],
-        moveCount: '--'
+        moveCount: '--',
       };
     }
     this.setState({ ...powerState });
@@ -74,7 +74,7 @@ class App extends Component {
       buttonPattern.push(randomNum);
       this.setState({
         buttonPattern,
-        moveCount: buttonPattern.length
+        moveCount: buttonPattern.length,
       });
       setTimeout(() => {
         this.computerPlayButtonPattern();
@@ -89,7 +89,7 @@ class App extends Component {
     let counter = count;
     const states = {
       isPlayersTurn: true,
-      playerCopyPattern: []
+      playerCopyPattern: [],
     };
     states.moveCount = moveCount === '! !' ? buttonPattern.length : moveCount;
     const activeColors = ['active-green', 'active-red', 'active-yellow', 'active-blue'];
@@ -144,7 +144,7 @@ class App extends Component {
         this.randomButtonGenerator(true);
       }
       this.setState({
-        moveCount: '! !'
+        moveCount: '! !',
       });
     }
   };

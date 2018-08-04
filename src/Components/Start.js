@@ -22,7 +22,7 @@ const Start = props => {
 };
 
 Start.propTypes = {
-  startGame: PropTypes.func.isRequired
+  startGame: PropTypes.func.isRequired,
 };
 
 export default Start;

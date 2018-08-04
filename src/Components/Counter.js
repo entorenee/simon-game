@@ -31,7 +31,7 @@ const Counter = props => {
 
 Counter.propTypes = {
   moveCount: PropTypes.string.isRequired,
-  gameOn: PropTypes.bool.isRequired
+  gameOn: PropTypes.bool.isRequired,
 };
 
 export default Counter;
