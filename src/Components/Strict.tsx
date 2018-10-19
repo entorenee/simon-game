@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classnames from 'classnames';
 import { keyboardHandler } from '../helpers';
 import '../style/Strict.css';
 
-const Strict = props => {
+type Props = {
+  isStrict: boolean,
+  toggleStrict: () => void,
+};
+
+const Strict: React.SFC<Props> = props => {
   const { isStrict, toggleStrict } = props;
   return (
     <div className="strict-button-wrapper">
@@ -21,11 +25,6 @@ const Strict = props => {
       STRICT
     </div>
   );
-};
-
-Strict.propTypes = {
-  toggleStrict: PropTypes.func.isRequired,
-  isStrict: PropTypes.bool.isRequired,
 };
 
 export default Strict;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
 import ColorPlayButtons from './ColorPlayButtons';
 import Counter from './Counter';
@@ -12,14 +12,23 @@ import simonSound3 from '../sounds/simonSound3.mp3';
 import buzzer from '../sounds/buzzer.mp3';
 import '../style/App.css';
 
-class App extends Component {
+type State = {
+  buttonPattern: string[],
+  gameOn: boolean,
+  isPlayersTurn: boolean,
+  moveCount: string,
+  playerCopyPattern: string[],
+  strict: boolean,
+}
+
+class App extends React.Component<{}, State> {
   state = {
-    gameOn: false,
-    strict: false,
-    isPlayersTurn: false,
     buttonPattern: [],
-    playerCopyPattern: [],
+    gameOn: false,
+    isPlayersTurn: false,
     moveCount: '--',
+    playerCopyPattern: [],
+    strict: false,
   };
 
   componentDidMount() {

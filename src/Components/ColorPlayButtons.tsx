@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import simonSound0 from '../sounds/simonSound0.mp3';
 import simonSound1 from '../sounds/simonSound1.mp3';
 import simonSound2 from '../sounds/simonSound2.mp3';
@@ -7,7 +6,15 @@ import simonSound3 from '../sounds/simonSound3.mp3';
 import { keyboardHandler } from '../helpers';
 import '../style/ColorPlayButtons.css';
 
-class ColorPlayButtons extends Component {
+type Props = {
+  activeClass: string,
+  gameOne: boolean,
+  id: string,
+  isPlayersTurn: boolean,
+  playerSelectButton: (id: number) => void,
+};
+
+class ColorPlayButtons extends React.Component<Props, {}> {
   componentDidMount() {
     this.buttonSounds = [
       new Audio(simonSound0),
@@ -60,13 +67,5 @@ class ColorPlayButtons extends Component {
     );
   }
 }
-
-ColorPlayButtons.propTypes = {
-  id: PropTypes.string.isRequired,
-  activeClass: PropTypes.string.isRequired,
-  isPlayersTurn: PropTypes.bool.isRequired,
-  playerSelectButton: PropTypes.func.isRequired,
-  gameOn: PropTypes.bool.isRequired,
-};
 
 export default ColorPlayButtons;

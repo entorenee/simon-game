@@ -1,8 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import '../style/Counter.css';
 
-const Counter = props => {
+type Props = {
+  gameOn: boolean,
+  moveCount: string,
+};
+
+const Counter: React.SFC<Props> = props => {
   const { gameOn, moveCount } = props;
   const moveCountString = moveCount < 10 ? `0${moveCount}` : moveCount;
   let moveCountDisplay;
@@ -27,11 +31,6 @@ const Counter = props => {
       <span className="count-label">COUNT</span>
     </div>
   );
-};
-
-Counter.propTypes = {
-  moveCount: PropTypes.string.isRequired,
-  gameOn: PropTypes.bool.isRequired,
 };
 
 export default Counter;

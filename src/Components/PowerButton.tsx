@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import classnames from 'classnames';
 import { keyboardHandler } from '../helpers';
 import '../style/PowerButton.css';
 
-const PowerButton = props => {
+type Props = {
+  gameOn: boolean,
+  toggleGamePower: () => void,
+};
+
+const PowerButton: React.SFC<Props> = props => {
   const { gameOn, toggleGamePower } = props;
   return (
     <div className="power-button-wrapper">
@@ -27,11 +31,6 @@ const PowerButton = props => {
       <span className="power-identifiers">ON</span>
     </div>
   );
-};
-
-PowerButton.propTypes = {
-  toggleGamePower: PropTypes.func.isRequired,
-  gameOn: PropTypes.bool.isRequired,
 };
 
 export default PowerButton;

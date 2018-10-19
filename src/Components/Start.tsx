@@ -1,9 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { keyboardHandler } from '../helpers';
 import '../style/Start.css';
 
-const Start = props => {
+type Props = {
+  startGame: () => void,
+};
+
+const Start: React.SFC<Props> = props => {
   const { startGame } = props;
   return (
     <div className="start-button-wrapper">
@@ -19,10 +22,6 @@ const Start = props => {
       START
     </div>
   );
-};
-
-Start.propTypes = {
-  startGame: PropTypes.func.isRequired,
 };
 
 export default Start;
