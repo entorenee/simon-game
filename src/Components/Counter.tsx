@@ -8,20 +8,22 @@ type Props = {
 
 const Counter: React.SFC<Props> = props => {
   const { gameOn, moveCount } = props;
-  const moveCountString = moveCount < 10 ? `0${moveCount}` : moveCount;
+  const moveCountString = Number(moveCount) < 10 ? `0${moveCount}` : moveCount;
   let moveCountDisplay;
   if (!gameOn) {
     moveCountDisplay = '';
   } else {
-    moveCountDisplay = moveCount !== 0 ? moveCountString : '--';
+    moveCountDisplay = Number(moveCount) !== 0 ? moveCountString : '--';
   }
 
   if (moveCountDisplay === '! !' || moveCountDisplay === 'WIN!') {
     const ele = document.querySelector('.current-count');
-    ele.classList.add('counter-blink');
-    setTimeout(() => {
-      ele.classList.remove('counter-blink');
-    }, 1700);
+    if (ele) {
+      ele.classList.add('counter-blink');
+      setTimeout(() => {
+        ele.classList.remove('counter-blink');
+      }, 1700);
+    }
   }
   return (
     <div className="counter-wrap">
