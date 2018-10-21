@@ -1,33 +1,24 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { keyboardHandler } from '../helpers';
 import '../style/PowerButton.css';
 
-type Props = {
-  gameOn: boolean,
-  toggleGamePower: () => void,
-};
+interface IProps {
+  gameOn: boolean;
+  toggleGamePower: () => void;
+}
 
-const PowerButton: React.SFC<Props> = props => {
+const PowerButton: React.SFC<IProps> = props => {
   const { gameOn, toggleGamePower } = props;
   return (
     <div className="power-button-wrapper">
       <span className="power-identifiers">OFF</span>
-      <div
-        className="toggle-power"
-        onClick={() => toggleGamePower()}
-        onKeyPress={e => {
-          if (keyboardHandler(e)) toggleGamePower();
-        }}
-        role="button"
-        tabIndex={0}
-      >
+      <button className="toggle-power" type="button" onClick={toggleGamePower}>
         <span
           className={classnames('toggle-power-button', {
             'power-on': gameOn,
           })}
         />
-      </div>
+      </button>
       <span className="power-identifiers">ON</span>
     </div>
   );

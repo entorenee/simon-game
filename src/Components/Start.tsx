@@ -1,23 +1,18 @@
 import * as React from 'react';
-import { keyboardHandler } from '../helpers';
 import '../style/Start.css';
 
-type Props = {
-  startGame: () => void,
-};
+interface IProps {
+  startGame: () => void;
+}
 
-const Start: React.SFC<Props> = props => {
+const Start: React.SFC<IProps> = props => {
   const { startGame } = props;
   return (
     <div className="start-button-wrapper">
-      <div
+      <button
         className="start-button"
-        onClick={() => startGame()}
-        onKeyPress={e => {
-          if (keyboardHandler(e)) startGame();
-        }}
-        role="button"
-        tabIndex={0}
+        type="button"
+        onClick={startGame}
       />
       START
     </div>

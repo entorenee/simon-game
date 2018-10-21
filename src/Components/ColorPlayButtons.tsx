@@ -1,18 +1,18 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+import { ButtonColors } from './App';
 import '../style/ColorPlayButtons.css';
 
-type Props = {
-  activeClass: string,
-  buttonColor: 'red' | 'yellow' | 'green' | 'blue',
-  gameOn: boolean,
-  id: string,
-  isPlayersTurn: boolean,
-  playerSelectButton: () => void,
-};
+interface IProps {
+  buttonColor: ButtonColors;
+  gameOn: boolean;
+  id: string;
+  isPlayersTurn: boolean;
+  playerSelectButton: () => void;
+}
 
-const ColorPlayButtons: React.SFC<Props> = props => {
+const ColorPlayButtons: React.SFC<IProps> = props => {
   const { buttonColor, isPlayersTurn, gameOn, id, playerSelectButton } = props;
 
   return (

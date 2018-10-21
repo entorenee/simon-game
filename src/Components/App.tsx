@@ -1,29 +1,29 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
+
 import ColorPlayButtons from './ColorPlayButtons';
-import Counter from './Counter';
-import Start from './Start';
-import Strict from './Strict';
-import PowerButton from './PowerButton';
+import GameControls from './GameControls';
+
+import buzzer from '../sounds/buzzer.mp3';
 import simonSound0 from '../sounds/simonSound0.mp3';
 import simonSound1 from '../sounds/simonSound1.mp3';
 import simonSound2 from '../sounds/simonSound2.mp3';
 import simonSound3 from '../sounds/simonSound3.mp3';
-import buzzer from '../sounds/buzzer.mp3';
 import '../style/App.css';
 
-type State = {
-  buttonPattern: number[],
-  gameOn: boolean,
-  isPlayersTurn: boolean,
-  moveCount: string,
-  playerCopyPattern: number[],
-  strict: boolean,
-};
+export type ButtonColors = 'green' | 'red' | 'yellow' | 'blue';
+interface IState {
+  buttonPattern: number[];
+  gameOn: boolean;
+  isPlayersTurn: boolean;
+  moveCount: string;
+  playerCopyPattern: number[];
+  strict: boolean;
+}
 
-class App extends React.Component<{}, State> {
-  buzzerSound: HTMLAudioElement
-  buttonSounds: HTMLAudioElement[]
+class App extends React.Component<{}, IState> {
+  buzzerSound: HTMLAudioElement;
+  buttonSounds: HTMLAudioElement[];
 
   state = {
     buttonPattern: [] as number[],
@@ -33,6 +33,8 @@ class App extends React.Component<{}, State> {
     playerCopyPattern: [] as number[],
     strict: false,
   };
+
+  buttons: ButtonColors[] = ['green', 'red', 'yellow', 'blue'];
 
   componentDidMount() {
     this.buzzerSound = new Audio(buzzer);
@@ -51,12 +53,12 @@ class App extends React.Component<{}, State> {
       }
 
       return {
-        gameOn: false,
-        strict: false,
-        isPlayersTurn: false,
         buttonPattern: [],
-        playerCopyPattern: [],
+        gameOn: false,
+        isPlayersTurn: false,
         moveCount: '--',
+        playerCopyPattern: [],
+        strict: false,
       };
     });
   };
@@ -107,12 +109,15 @@ class App extends React.Component<{}, State> {
         } else {
           this.setState(prevState => {
             const { moveCount: prevMoveCount, buttonPattern } = prevState;
-            const moveCount = prevMoveCount === '! !' ? String(buttonPattern.length) : prevMoveCount;
+            const moveCount =
+              prevMoveCount === '! !'
+                ? String(buttonPattern.length)
+                : prevMoveCount;
             return {
               ...prevState,
               isPlayersTurn: true,
-              playerCopyPattern: [],
               moveCount,
+              playerCopyPattern: [],
             };
           });
         }
@@ -169,52 +174,30 @@ class App extends React.Component<{}, State> {
       <div className="simon-app">
         <Helmet>
           <title>Simon Game | Daniel Lemay</title>
-          <link href="https://fonts.googleapis.com/css?family=Ultra" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Ultra"
+            rel="stylesheet"
+          />
         </Helmet>
         <div className="game">
-          <ColorPlayButtons
-            id="0"
-            buttonColor="green"
-            activeClass="active-green"
-            playerSelectButton={() => this.playerSelectButton(0)}
-            isPlayersTurn={isPlayersTurn}
+          {this.buttons.map((color, i) => (
+            <ColorPlayButtons
+              key={color}
+              id={String(i)}
+              buttonColor={color}
+              playerSelectButton={() => this.playerSelectButton(i)}
+              isPlayersTurn={isPlayersTurn}
+              gameOn={gameOn}
+            />
+          ))}
+          <GameControls
             gameOn={gameOn}
+            moveCount={moveCount}
+            startGame={this.startGame}
+            strict={strict}
+            toggleGamePower={this.toggleGamePower}
+            toggleStrict={this.toggleStrict}
           />
-          <ColorPlayButtons
-            id="1"
-            buttonColor="red"
-            activeClass="active-red"
-            playerSelectButton={() => this.playerSelectButton(1)}
-            isPlayersTurn={isPlayersTurn}
-            gameOn={gameOn}
-          />
-          <ColorPlayButtons
-            id="2"
-            buttonColor="yellow"
-            activeClass="active-yellow"
-            playerSelectButton={() => this.playerSelectButton(2)}
-            isPlayersTurn={isPlayersTurn}
-            gameOn={gameOn}
-          />
-          <ColorPlayButtons
-            id="3"
-            buttonColor="blue"
-            activeClass="active-blue"
-            playerSelectButton={() => this.playerSelectButton(3)}
-            isPlayersTurn={isPlayersTurn}
-            gameOn={gameOn}
-          />
-          <div className="game-control-container">
-            <div className="game-control-wrapper">
-              <h1>Simon</h1>
-              <div className="game-controls">
-                <Counter moveCount={String(moveCount)} gameOn={gameOn} />
-                <Start startGame={this.startGame} />
-                <Strict toggleStrict={this.toggleStrict} isStrict={strict} />
-              </div>
-              <PowerButton toggleGamePower={this.toggleGamePower} gameOn={gameOn} />
-            </div>
-          </div>
         </div>
       </div>
     );

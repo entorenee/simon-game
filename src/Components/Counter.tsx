@@ -1,12 +1,12 @@
 import * as React from 'react';
 import '../style/Counter.css';
 
-type Props = {
-  gameOn: boolean,
-  moveCount: string,
-};
+interface IProps {
+  gameOn: boolean;
+  moveCount: string;
+}
 
-const Counter: React.SFC<Props> = props => {
+const Counter: React.SFC<IProps> = props => {
   const { gameOn, moveCount } = props;
   const moveCountString = Number(moveCount) < 10 ? `0${moveCount}` : moveCount;
   let moveCountDisplay;
