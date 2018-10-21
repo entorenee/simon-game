@@ -97,13 +97,14 @@ class App extends React.Component<{}, IState> {
   computerPlayButtonPattern = (count = 0) => {
     const { buttonPattern: pattern, gameOn } = this.state;
     const id = pattern[count];
+    const colorClass = `color-buttons__${this.buttons[id]}`;
 
-    const el = document.getElementById(`btn-${id}`);
+    const el = document.querySelector(`.${colorClass}`) as HTMLElement;
     if (gameOn && el) {
-      el.focus();
+      el.classList.add(`${colorClass}--active`);
       this.buttonSounds[id].play();
       setTimeout(() => {
-        el.blur();
+        el.classList.remove(`${colorClass}--active`);
         if (count < pattern.length - 1) {
           this.computerPlayButtonPattern(count + 1);
         } else {
@@ -183,7 +184,6 @@ class App extends React.Component<{}, IState> {
           {this.buttons.map((color, i) => (
             <ColorPlayButtons
               key={color}
-              id={String(i)}
               buttonColor={color}
               playerSelectButton={() => this.playerSelectButton(i)}
               isPlayersTurn={isPlayersTurn}

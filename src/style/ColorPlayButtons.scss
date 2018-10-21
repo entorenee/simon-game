@@ -23,7 +23,7 @@
   border-top: solid 15px $borderColor;
   border-left: solid 15px $borderColor;
 
-  &:active {
+  &:active, &--active {
     background-color: $greenActive;
   }
 }
@@ -34,7 +34,7 @@
   border-top: solid 15px $borderColor;
   border-right: solid 15px $borderColor;
 
-  &:active {
+  &:active, &--active {
     background-color: $redActive;
   }
 }
@@ -44,7 +44,7 @@
   border-bottom: solid 15px $borderColor;
   border-left: solid 15px $borderColor;
 
-  &:active {
+  &:active, &--active {
     background-color: $yellowActive;
   }
 }
@@ -55,7 +55,7 @@
   border-bottom: solid 15px $borderColor;
   border-right: solid 15px $borderColor;
 
-  &:active {
+  &:active, &--active {
     background-color: $blueActive;
   }
 }
