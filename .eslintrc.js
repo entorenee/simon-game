@@ -27,13 +27,4 @@ module.exports = {
     'function-paren-newline': 0,
     'comma-dangle': 0,
   },
-  overrides: [
-    {
-      files: ['**/*.ts', '**/*.tsx'],
-      parser: 'typescript-eslint-parser',
-      rules: {
-        'no-undef': 0
-      }
-    },
-  ],
 };
