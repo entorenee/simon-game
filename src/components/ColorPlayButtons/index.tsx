@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { ButtonColors } from './App';
-import '../style/ColorPlayButtons.css';
+import { ButtonColors } from '../App';
+import './style.scss';
 
 interface IProps {
   buttonColor: ButtonColors;

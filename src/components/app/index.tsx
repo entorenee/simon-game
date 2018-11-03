@@ -1,15 +1,15 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
-import ColorPlayButtons from './ColorPlayButtons';
-import GameControls from './GameControls';
+import ColorPlayButtons from '../ColorPlayButtons';
+import GameControls from '../GameControls';
 
-import buzzer from '../sounds/buzzer.mp3';
-import simonSound0 from '../sounds/simonSound0.mp3';
-import simonSound1 from '../sounds/simonSound1.mp3';
-import simonSound2 from '../sounds/simonSound2.mp3';
-import simonSound3 from '../sounds/simonSound3.mp3';
-import '../style/App.css';
+import buzzer from '../../sounds/buzzer.mp3';
+import simonSound0 from '../../sounds/simonSound0.mp3';
+import simonSound1 from '../../sounds/simonSound1.mp3';
+import simonSound2 from '../../sounds/simonSound2.mp3';
+import simonSound3 from '../../sounds/simonSound3.mp3';
+import './style.scss';
 
 export type ButtonColors = 'green' | 'red' | 'yellow' | 'blue';
 interface IState {
@@ -22,8 +22,8 @@ interface IState {
 }
 
 class App extends React.Component<{}, IState> {
-  buzzerSound: HTMLAudioElement;
-  buttonSounds: HTMLAudioElement[];
+  buzzerSound!: HTMLAudioElement;
+  buttonSounds!: HTMLAudioElement[];
 
   state = {
     buttonPattern: [] as number[],

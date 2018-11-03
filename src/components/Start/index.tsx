@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../style/Start.css';
+import './style.scss';
 
 interface IProps {
   startGame: () => void;

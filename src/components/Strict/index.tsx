@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import '../style/Strict.css';
+import './style.scss';
 
 interface IProps {
   isStrict: boolean;

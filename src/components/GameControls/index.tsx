@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import Counter from './Counter';
-import PowerButton from './PowerButton';
-import Start from './Start';
-import Strict from './Strict';
+import Counter from '../Counter';
+import PowerButton from '../PowerButton';
+import Start from '../Start';
+import Strict from '../Strict';
 
 interface IProps {
   gameOn: boolean;

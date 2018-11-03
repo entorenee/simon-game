@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../style/Counter.css';
+import './style.scss';
 
 interface IProps {
   gameOn: boolean;
