@@ -1,4 +1,4 @@
-@import './vars.scss';
+@import '../vars.scss';
 
 .color-buttons {
   width: 45%;
@@ -17,46 +17,45 @@
   }
 }
 
-.btn-0 {
+.color-buttons__green {
   background-color: $green;
   border-top-left-radius: 100%;
   border-top: solid 15px $borderColor;
   border-left: solid 15px $borderColor;
+
+  &:active, &--active {
+    background-color: $greenActive;
+  }
 }
 
-.active-green {
-  background-color: $greenActive !important;
-}
-
-.btn-1 {
+.color-buttons__red {
   background-color: $red;
   border-top-right-radius: 100%;
   border-top: solid 15px $borderColor;
   border-right: solid 15px $borderColor;
-}
 
-.active-red {
-  background-color: $redActive !important;
+  &:active, &--active {
+    background-color: $redActive;
+  }
 }
-
-.btn-2 {
+.color-buttons__yellow {
   background-color: $yellow;
   border-bottom-left-radius: 100%;
   border-bottom: solid 15px $borderColor;
   border-left: solid 15px $borderColor;
+
+  &:active, &--active {
+    background-color: $yellowActive;
+  }
 }
 
-.active-yellow {
-  background-color: $yellowActive !important;
-}
-
-.btn-3 {
+.color-buttons__blue {
   background-color: $blue;
   border-bottom-right-radius: 100%;
   border-bottom: solid 15px $borderColor;
   border-right: solid 15px $borderColor;
-}
 
-.active-blue {
-  background-color: $blueActive !important;
+  &:active, &--active {
+    background-color: $blueActive;
+  }
 }

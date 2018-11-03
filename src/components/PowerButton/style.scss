@@ -1,4 +1,4 @@
-@import './vars.scss';
+@import '../vars.scss';
 
 .power-button-wrapper {
   margin: 0 auto;
@@ -22,14 +22,18 @@
   width: 60px;
   height: inherit;
   display: inline-block;
+  position: relative;
   cursor: pointer;
   background-color: black;
 }
 
 .toggle-power-button {
   width: 50%;
-  height: inherit;
+  height: 100%;
   display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: blue;
   transition: transform 500ms;
 }
