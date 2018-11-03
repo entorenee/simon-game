@@ -1,11 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { ButtonColors } from '../App';
+import { ButtonColor } from '../App';
 import './style.scss';
 
 interface Props {
-  buttonColor: ButtonColors;
+  buttonColor: ButtonColor;
   gameOn: boolean;
   isPlayersTurn: boolean;
   playerSelectButton: () => void;
