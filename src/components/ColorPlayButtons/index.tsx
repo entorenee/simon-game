@@ -4,14 +4,14 @@ import classNames from 'classnames';
 import { ButtonColors } from '../App';
 import './style.scss';
 
-interface IProps {
+interface Props {
   buttonColor: ButtonColors;
   gameOn: boolean;
   isPlayersTurn: boolean;
   playerSelectButton: () => void;
 }
 
-const ColorPlayButtons: React.SFC<IProps> = props => {
+const ColorPlayButtons: React.SFC<Props> = props => {
   const { buttonColor, isPlayersTurn, gameOn, playerSelectButton } = props;
 
   return (

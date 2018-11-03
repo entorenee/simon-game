@@ -1,11 +1,11 @@
 import * as React from 'react';
 import './style.scss';
 
-interface IProps {
+interface Props {
   startGame: () => void;
 }
 
-const Start: React.SFC<IProps> = props => {
+const Start: React.SFC<Props> = props => {
   const { startGame } = props;
   return (
     <div className="start-button-wrapper">

@@ -11,8 +11,8 @@ import simonSound2 from '../../sounds/simonSound2.mp3';
 import simonSound3 from '../../sounds/simonSound3.mp3';
 import './style.scss';
 
-export type ButtonColors = 'green' | 'red' | 'yellow' | 'blue';
-interface IState {
+export type ButtonColor = 'green' | 'red' | 'yellow' | 'blue';
+interface State {
   buttonPattern: number[];
   gameOn: boolean;
   isPlayersTurn: boolean;
@@ -21,7 +21,7 @@ interface IState {
   strict: boolean;
 }
 
-class App extends React.Component<{}, IState> {
+class App extends React.Component<{}, State> {
   buzzerSound!: HTMLAudioElement;
   buttonSounds!: HTMLAudioElement[];
 
@@ -34,7 +34,7 @@ class App extends React.Component<{}, IState> {
     strict: false,
   };
 
-  buttons: ButtonColors[] = ['green', 'red', 'yellow', 'blue'];
+  buttons: ButtonColor[] = ['green', 'red', 'yellow', 'blue'];
 
   componentDidMount() {
     this.buzzerSound = new Audio(buzzer);

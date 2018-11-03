@@ -2,12 +2,12 @@ import * as React from 'react';
 import classnames from 'classnames';
 import './style.scss';
 
-interface IProps {
+interface Props {
   gameOn: boolean;
   toggleGamePower: () => void;
 }
 
-const PowerButton: React.SFC<IProps> = props => {
+const PowerButton: React.SFC<Props> = props => {
   const { gameOn, toggleGamePower } = props;
   return (
     <div className="power-button-wrapper">

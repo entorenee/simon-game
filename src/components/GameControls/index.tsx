@@ -5,7 +5,7 @@ import PowerButton from '../PowerButton';
 import Start from '../Start';
 import Strict from '../Strict';
 
-interface IProps {
+interface Props {
   gameOn: boolean;
   moveCount: string;
   startGame: () => void;
@@ -14,7 +14,7 @@ interface IProps {
   toggleStrict: () => void;
 }
 
-const GameControls: React.SFC<IProps> = props => {
+const GameControls: React.SFC<Props> = props => {
   const {
     gameOn,
     moveCount,

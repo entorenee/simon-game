@@ -2,12 +2,12 @@ import * as React from 'react';
 import classnames from 'classnames';
 import './style.scss';
 
-interface IProps {
+interface Props {
   isStrict: boolean;
   toggleStrict: () => void;
 }
 
-const Strict: React.SFC<IProps> = props => {
+const Strict: React.SFC<Props> = props => {
   const { isStrict, toggleStrict } = props;
   return (
     <div className="strict-button-wrapper">
